@@ -1,4 +1,4 @@
-/* Luna — click anywhere and she runs there. Sprite + walk animation reused from justin-bio. */
+/* Luna, click anywhere and she runs there. Sprite + walk animation reused from justin-bio. */
 (function () {
   const S = {
     sheet: "luna-sprite.png",
