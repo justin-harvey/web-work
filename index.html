@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Justin Harvey — Web Work</title>
+<meta name="description" content="A simple gallery of live websites and apps built by Justin Harvey." />
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #191c23;
+    --card-hover: #21252e;
+    --text: #f2f4f8;
+    --muted: #9aa3b2;
+    --accent: #6ea8fe;
+    --border: #262b34;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 24px 24px;
+  }
+  header h1 { font-size: 2.4rem; margin: 0 0 8px; }
+  header p { color: var(--muted); font-size: 1.1rem; margin: 0; max-width: 560px; }
+  main { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
+  section { margin-top: 48px; }
+  section h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  a.card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+  }
+  a.card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .card .icon {
+    width: 30px; height: 30px;
+    color: var(--accent);
+    stroke: currentColor; fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .card h3 { margin: 12px 0 6px; font-size: 1.15rem; }
+  .card p { margin: 0 0 12px; color: var(--muted); font-size: 0.92rem; }
+  .card .visit { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+  .tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px;
+    padding: 2px 8px; margin-left: 8px; vertical-align: middle;
+  }
+  footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+  .town-link {
+    position: fixed; top: 16px; right: 16px; z-index: 10000;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--accent); color: #0f1115;
+    font-weight: 700; font-size: 0.85rem; text-decoration: none;
+    padding: 10px 16px; border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+    transition: transform 0.12s ease, filter 0.12s ease;
+  }
+  .town-link:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .town-link svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+  <!-- icon library -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+    <symbol id="ic-droplet" viewBox="0 0 24 24"><path d="M12 2.7l5.7 5.7a8 8 0 1 1-11.4 0z"/></symbol>
+    <symbol id="ic-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+    <symbol id="ic-church" viewBox="0 0 24 24"><path d="M12 2v5"/><path d="M9.5 4.5h5"/><path d="M12 7 5 11v11h14V11z"/><path d="M10 22v-4a2 2 0 0 1 4 0v4"/></symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+    <symbol id="ic-clipboard" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></symbol>
+    <symbol id="ic-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+    <symbol id="ic-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"/></symbol>
+    <symbol id="ic-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1.1"/></symbol>
+    <symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M4 20s-.5-8 6-11c4-1.8 10-1.6 10-1.6s.2 5.8-3 9.6C13 21 4 20 4 20z"/><path d="M4.5 19.5C8 15 11 13 15 11.5"/></symbol>
+    <symbol id="ic-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.5 12.5 20 3"/><path d="M16 7l3 3"/><path d="M13.5 9.5l2.5 2.5"/></symbol>
+    <symbol id="ic-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  </svg>
+
+  <a class="town-link" href="https://justin-bio.netlify.app/luna.html" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/></svg>
+    Visit Luna Town →
+  </a>
+
+  <header>
+    <h1>Justin Harvey</h1>
+    <p>I design and build websites and apps. Here are some things that are live right now &mdash; click any card to open it.</p>
+    <p class="hint">Tip: click anywhere and Luna will come running. 🐾</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Local Businesses</h2>
+      <div class="grid">
+        <a class="card" href="https://meghanlaurahair.com/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-scissors"/></svg>
+          <h3>Meghan Hair Studio</h3>
+          <p>Hair color &amp; balayage salon in Portland, Maine.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://chalk-studio.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-droplet"/></svg>
+          <h3>Chalk Studio</h3>
+          <p>Upscale, eclectic hair studio in Portland, Maine.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://secondmountaininternalmedicine.com/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-activity"/></svg>
+          <h3>Oxford Hills Internal Medicine</h3>
+          <p>Home-based primary care in the Oxford Hills, Maine.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Community &amp; Causes</h2>
+      <div class="grid">
+        <a class="card" href="https://umc-minot-maine.netlify.app" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-church"/></svg>
+          <h3>UMC Minot</h3>
+          <p>Official site for the United Methodist Church of Minot, Maine.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://maine-beacon.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-star"/></svg>
+          <h3>Maine Beacon</h3>
+          <p>Supporting Maine's unsheltered neighbors.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://hope-maine.netlify.app" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-pin"/></svg>
+          <h3>Town of Hope</h3>
+          <p>Community website for Hope, Maine.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://getwellsean.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-heart"/></svg>
+          <h3>Get Well Soon, Sean</h3>
+          <p>A community fundraiser and collaborative message wall.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://rot-watch.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-clipboard"/></svg>
+          <h3>Response Board</h3>
+          <p>A public accountability tracker for elected officials.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+        <a class="card" href="https://ebneo-poc.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-book"/></svg>
+          <h3>EBNEO</h3>
+          <p>International Society for Evidence-Based Neonatology.</p>
+          <span class="visit">Visit site →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Games</h2>
+      <div class="grid">
+        <a class="card" href="https://is0topia.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-atom"/></svg>
+          <h3>Isotopia</h3>
+          <p>A Pokémon-style game for learning the periodic table.</p>
+          <span class="visit">Play →</span>
+        </a>
+        <a class="card" href="https://dust-bound.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-robot"/></svg>
+          <h3>Dustbound</h3>
+          <p>A browser game about a robot vacuum that wakes up.</p>
+          <span class="visit">Play →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Apps &amp; Tools</h2>
+      <div class="grid">
+        <a class="card" href="https://yumbo.netlify.app" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-leaf"/></svg>
+          <h3>Yumbo</h3>
+          <p>Scan produce to check its origin and recall risk.</p>
+          <span class="visit">Open app →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Templates &amp; Demos</h2>
+      <div class="grid">
+        <a class="card" href="https://amy-balko-realty.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-key"/></svg>
+          <h3>Realtor Site <span class="tag">Template</span></h3>
+          <p>A polished, ready-to-brand template for real estate agents.</p>
+          <span class="visit">View template →</span>
+        </a>
+        <a class="card" href="https://about-justin.netlify.app/" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#ic-user"/></svg>
+          <h3>Personal Portfolio <span class="tag">Template</span></h3>
+          <p>A clean personal / resume site template for professionals.</p>
+          <span class="visit">View template →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built by Justin Harvey · Every link above is a live site.
+  </footer>
+
+  <script src="luna.js"></script>
+</body>
+</html>
